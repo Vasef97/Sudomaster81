@@ -4,6 +4,7 @@ import GamePage from './pages/GamePage/GamePage';
 import Login from './components/Login/Login';
 import Register from './components/Register/Register';
 import ServerErrorPage from './pages/ServerErrorPage/ServerErrorPage';
+import WakingUpPage from './pages/WakingUpPage/WakingUpPage';
 import Footer from './components/Footer/Footer';
 import AboutDialog from './components/Dialogs/AboutDialog/AboutDialog';
 import { COLOR_PROFILES } from './constants/gameConstants';
@@ -17,6 +18,7 @@ function App() {
     authState,
     user,
     hasServerError,
+    isWakingUp,
     handleLoginSuccess: handleLoginSuccessAuth,
     handleRegisterSuccess: handleRegisterSuccessAuth,
     handleSwitchToRegister,
@@ -115,8 +117,9 @@ function App() {
 
   return (
     <>
-      {hasServerError && <ServerErrorPage onRetry={handleRetryServerWithGameCleanup} />}
-      {!hasServerError && (
+      {isWakingUp && <WakingUpPage />}
+      {!isWakingUp && hasServerError && <ServerErrorPage onRetry={handleRetryServerWithGameCleanup} />}
+      {!isWakingUp && !hasServerError && (
         <>
           {authState === 'checking' && <div className="app__loading">⏳ Loading...</div>}
           {authState === 'login' && (

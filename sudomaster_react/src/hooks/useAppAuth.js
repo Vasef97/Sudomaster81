@@ -5,15 +5,28 @@ export const useAppAuth = (onLogout) => {
   const [authState, setAuthState] = useState('checking');
   const [user, setUser] = useState(null);
   const [hasServerError, setHasServerError] = useState(false);
+  const [isWakingUp, setIsWakingUp] = useState(false);
+  const retryCountRef = useRef(0);
+  const maxRetries = 20;
 
   const performAuthCheck = async () => {
     try {
       try {
         await authService.checkServerHealth();
       } catch (healthError) {
+        if (retryCountRef.current < maxRetries) {
+          setIsWakingUp(true);
+          retryCountRef.current += 1;
+          setTimeout(() => performAuthCheck(), 3000);
+          return;
+        }
+        setIsWakingUp(false);
         setHasServerError(true);
         return;
       }
+
+      retryCountRef.current = 0;
+      setIsWakingUp(false);
 
       const token = localStorage.getItem('token');
       const expiry = localStorage.getItem('tokenExpiry');
@@ -129,6 +142,7 @@ export const useAppAuth = (onLogout) => {
     authState,
     user,
     hasServerError,
+    isWakingUp,
     handleLoginSuccess,
     handleRegisterSuccess,
     handleSwitchToRegister,
