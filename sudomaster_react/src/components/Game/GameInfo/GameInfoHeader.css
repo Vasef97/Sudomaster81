@@ -1,0 +1,45 @@
+.game-info-header {
+  display: contents;
+}
+
+.game-info-header__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  min-width: fit-content;
+}
+
+.game-info-header__label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.game-info-header__value {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #1a1a1a;
+}
+
+.game-info-header__timer {
+  font-family: 'Courier New', monospace;
+  letter-spacing: 0.05em;
+}
+
+.game-info-header__error-indicator {
+  transition: all 0.3s ease;
+}
+
+.game-info-header__error-count {
+  color: #1a1a1a;
+}
+
+@media (max-width: 810px) {
+  .game-info-header,
+  .game-info-header__item {
+    display: none;
+  }
+}

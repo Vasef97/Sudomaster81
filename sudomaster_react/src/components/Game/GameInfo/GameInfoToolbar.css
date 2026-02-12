@@ -1,0 +1,47 @@
+.game-info-toolbar {
+  display: contents;
+}
+
+.game-info-toolbar__pause-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.game-info-toolbar__restart-btn,
+.game-info-toolbar__pause-btn,
+.game-info-toolbar__settings-btn,
+.game-info-toolbar__logout-btn,
+.game-info-toolbar__info-btn {
+  padding: 0.4rem !important;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+  min-width: fit-content;
+}
+
+.game-info-toolbar__restart-btn svg,
+.game-info-toolbar__pause-btn svg,
+.game-info-toolbar__settings-btn svg,
+.game-info-toolbar__logout-btn svg,
+.game-info-toolbar__info-btn svg {
+  font-size: 1.8rem !important;
+}
+
+.game-info-toolbar__menu-btn {
+  font-size: 1.05rem !important;
+  padding: 0.5rem 1rem !important;
+  flex-shrink: 0;
+  white-space: nowrap;
+  min-width: fit-content;
+}
+
+@media (max-width: 810px) {
+  .game-info-toolbar {
+    display: none !important;
+  }
+
+  .game-info-toolbar__restart-btn svg,
+  .game-info-toolbar__settings-btn svg,
+  .game-info-toolbar__logout-btn svg {
+    font-size: 1.3rem !important;
+  }
+}

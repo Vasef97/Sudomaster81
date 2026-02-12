@@ -1,0 +1,17 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0;
+  text-align: center;
+  padding-bottom: 100px;
+}
+
+.app__loading,
+.app__error {
+  padding: 20px;
+  text-align: center;
+}
+
+.app__error {
+  color: red;
+}

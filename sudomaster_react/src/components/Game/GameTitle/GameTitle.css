@@ -1,0 +1,42 @@
+.game-title__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0;
+}
+
+.game-title__title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #1a1a1a;
+  margin: 0;
+  text-shadow: none;
+}
+
+.game-title__number {
+  color: #ffa500;
+  font-weight: bold;
+}
+
+@media (max-width: 810px) {
+  .game-title__container {
+    flex-direction: row;
+    gap: 0.5rem;
+    padding: 0;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .game-title__title {
+    font-size: 1.3rem;
+    margin: 0;
+    font-weight: bold;
+  }
+
+  .game-title__icon {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+  }
+}

@@ -1,0 +1,10 @@
+.mobile-game-menu__btn {
+  display: none !important;
+}
+
+
+@media (max-width: 810px) {
+  .mobile-game-menu__btn {
+    display: flex !important;
+  }
+}

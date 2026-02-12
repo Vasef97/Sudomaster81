@@ -1,0 +1,40 @@
+
+
+.settings-dialog .MuiDialogContent-root {
+  max-height: 60vh;
+  overflow: auto;
+}
+
+.settings-affects-score {
+  font-size: 0.75rem;
+  color: #999;
+  font-weight: 600;
+  animation: affectsScoreFade 2s ease forwards;
+}
+
+@keyframes affectsScoreFade {
+  0% { opacity: 1; }
+  70% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@media (max-width: 810px) {
+  .settings-dialog .MuiDialog-paper {
+    width: 80vw;
+    max-width: 80vw;
+    max-height: 90vh;
+  }
+
+  .settings-dialog .MuiDialogTitle-root {
+    font-size: 1.2rem !important;
+  }
+
+  .settings-dialog .MuiDialogContent-root {
+    max-height: 60vh;
+    overflow: auto;
+  }
+
+  .settings-dialog .MuiFormControlLabel-label {
+    font-size: 0.9rem !important;
+  }
+}

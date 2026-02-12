@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-6 -6 192 192" width="180" height="180">
+  <!-- Background -->
+  <rect x="-6" y="-6" width="192" height="192" fill="#ffffff"/>
+  
+  <!-- Outer border for entire grid -->
+  <rect x="0" y="0" width="180" height="180" fill="none" stroke="#1a1a1a" stroke-width="6" stroke-linejoin="miter"/>
+  
+  <!-- 3x3 Grid with no gaps -->
+  <!-- Row 1 -->
+  <rect x="0" y="0" width="60" height="60" fill="#ffffff" stroke="#1a1a1a" stroke-width="6" stroke-linejoin="bevel"/>
+  <text x="30" y="35" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#1a1a1a" text-anchor="middle" dominant-baseline="middle">1</text>
+  
+  <rect x="60" y="0" width="60" height="60" fill="#ffffff" stroke="#1a1a1a" stroke-width="6" stroke-linejoin="bevel"/>
+  <text x="90" y="35" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#1a1a1a" text-anchor="middle" dominant-baseline="middle">2</text>
+  
+  <rect x="120" y="0" width="60" height="60" fill="#ffffff" stroke="#1a1a1a" stroke-width="6" stroke-linejoin="bevel"/>
+  <text x="150" y="35" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#1a1a1a" text-anchor="middle" dominant-baseline="middle">3</text>
+  
+  <!-- Row 2 -->
+  <rect x="0" y="60" width="60" height="60" fill="#ffffff" stroke="#1a1a1a" stroke-width="6" stroke-linejoin="bevel"/>
+  
+  <rect x="60" y="60" width="60" height="60" fill="#ffa500" stroke="#1a1a1a" stroke-width="6" stroke-linejoin="bevel"/>
+  <text x="90" y="95" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#ffffff" text-anchor="middle" dominant-baseline="middle">?</text>
+  
+  <rect x="120" y="60" width="60" height="60" fill="#ffffff" stroke="#1a1a1a" stroke-width="6" stroke-linejoin="bevel"/>
+  
+  <!-- Row 3 -->
+  <rect x="0" y="120" width="60" height="60" fill="#ffffff" stroke="#1a1a1a" stroke-width="6" stroke-linejoin="bevel"/>
+  <rect x="60" y="120" width="60" height="60" fill="#ffffff" stroke="#1a1a1a" stroke-width="6" stroke-linejoin="bevel"/>
+  <rect x="120" y="120" width="60" height="60" fill="#ffffff" stroke="#1a1a1a" stroke-width="6" stroke-linejoin="bevel"/>
+</svg>

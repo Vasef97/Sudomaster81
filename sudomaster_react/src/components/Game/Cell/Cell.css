@@ -1,0 +1,213 @@
+.cell {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  user-select: none;
+  border: 1px solid #999;
+  transition: background-color 0.15s ease;
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden;
+  flex-shrink: 0;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  min-width: 0;
+  min-height: 0;
+}
+
+.cell:nth-child(3),
+.cell:nth-child(12),
+.cell:nth-child(21),
+.cell:nth-child(30),
+.cell:nth-child(39),
+.cell:nth-child(48),
+.cell:nth-child(57),
+.cell:nth-child(66),
+.cell:nth-child(75),
+.cell:nth-child(6),
+.cell:nth-child(15),
+.cell:nth-child(24),
+.cell:nth-child(33),
+.cell:nth-child(42),
+.cell:nth-child(51),
+.cell:nth-child(60),
+.cell:nth-child(69),
+.cell:nth-child(78) {
+  border-right: 2px solid #000000;
+}
+
+.cell:nth-child(19),
+.cell:nth-child(20),
+.cell:nth-child(21),
+.cell:nth-child(22),
+.cell:nth-child(23),
+.cell:nth-child(24),
+.cell:nth-child(25),
+.cell:nth-child(26),
+.cell:nth-child(27) {
+  border-bottom: 2px solid #000000;
+}
+
+.cell:nth-child(46),
+.cell:nth-child(47),
+.cell:nth-child(48),
+.cell:nth-child(49),
+.cell:nth-child(50),
+.cell:nth-child(51),
+.cell:nth-child(52),
+.cell:nth-child(53),
+.cell:nth-child(54) {
+  border-bottom: 2px solid #000000;
+}
+
+.cell--prefilled {
+  background-color: #e8e8e8;
+  cursor: default;
+  color: #1a1a1a;
+}
+
+.cell--empty {
+  background-color: #ffffff;
+  color: #1a1a1a;
+}
+
+.cell--empty:hover {
+  background-color: #f5f5f5;
+}
+
+.cell--selected {
+  background-color: var(--color-intensive, #ffa500);
+  color: #1a1a1a;
+}
+
+.cell--highlighted {
+  background-color: var(--color-light, #ffe4cc);
+  color: #1a1a1a;
+}
+
+.cell--highlighted-value {
+  background-color: var(--color-intensive, #ffa500);
+  color: #1a1a1a;
+}
+
+.cell--duplicate {
+  background-color: #ffffff;
+  color: #1a1a1a;
+}
+
+.cell__value {
+  display: block;
+}
+
+.cell__duplicate-dot {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 8px;
+  height: 8px;
+  background-color: #ff0000;
+  border-radius: 50%;
+  box-shadow: 0 0 2px rgba(255, 0, 0, 0.8);
+}
+
+.cell__candidates {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 0;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  min-width: 0;
+  min-height: 0;
+}
+
+.cell__candidate {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.5rem;
+  font-weight: bold;
+  color: #666 !important;
+  min-width: 0;
+  min-height: 0;
+  flex-shrink: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.cell__candidate--active {
+  color: #1a1a1a;
+  font-weight: bold;
+}
+
+.cell__candidates-background {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.cell__candidate-dot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.5rem;
+  color: #666 !important;
+  min-width: 0;
+  min-height: 0;
+  flex-shrink: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.cell__candidate-dot--active {
+  color: #1a1a1a;
+  font-weight: bold;
+}
+
+.cell--error-shake .cell__value {
+  color: #ff0000 !important;
+  display: inline-block;
+  animation: cellValueShake 0.5s ease;
+}
+
+@keyframes cellValueShake {
+  0% { transform: translateX(0); }
+  20% { transform: translateX(-3px); }
+  40% { transform: translateX(3px); }
+  60% { transform: translateX(-2px); }
+  80% { transform: translateX(2px); }
+  100% { transform: translateX(0); }
+}
+
+.cell--medium-font {
+  font-size: 1.5rem;
+}
+
+.cell--medium-font .cell__candidate,
+.cell--medium-font .cell__candidate-dot {
+  font-size: 0.55rem;
+}
+
+.cell--large-font {
+  font-size: 1.8rem;
+}
+
+.cell--large-font .cell__candidate,
+.cell--large-font .cell__candidate-dot {
+  font-size: 0.55rem;
+}

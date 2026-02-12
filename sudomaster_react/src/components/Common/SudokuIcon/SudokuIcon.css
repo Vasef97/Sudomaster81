@@ -1,0 +1,113 @@
+.sudoku-icon--medium .sudoku-icon__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  padding: 0;
+}
+
+.sudoku-icon--medium .sudoku-icon__cell {
+  width: 30px;
+  height: 30px;
+  outline: 2px solid #1a1a1a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 0.9rem;
+  background-color: #ffffff;
+}
+
+.sudoku-icon--medium .sudoku-icon__cell--highlight {
+  background-color: #ffa500;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.sudoku-icon--tiny .sudoku-icon__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  padding: 0;
+}
+
+.sudoku-icon--tiny .sudoku-icon__cell {
+  width: 18px;
+  height: 18px;
+  outline: 1.5px solid #1a1a1a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 0.5rem;
+  background-color: #ffffff;
+}
+
+.sudoku-icon--tiny .sudoku-icon__cell--highlight {
+  background-color: #ffa500;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 0.55rem;
+}
+
+.sudoku-icon--small .sudoku-icon__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  padding: 0;
+}
+
+.sudoku-icon--small .sudoku-icon__cell {
+  width: 18px;
+  height: 18px;
+  outline: 1.5px solid #1a1a1a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 0.55rem;
+  background-color: #ffffff;
+}
+
+.sudoku-icon--small .sudoku-icon__cell--highlight {
+  background-color: #ffa500;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 0.6rem;
+}
+
+.sudoku-icon--large .sudoku-icon__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  padding: 0;
+}
+
+.sudoku-icon--large .sudoku-icon__cell {
+  width: 40px;
+  height: 40px;
+  outline: 2px solid #1a1a1a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.1rem;
+  background-color: #ffffff;
+}
+
+.sudoku-icon--large .sudoku-icon__cell--highlight {
+  background-color: #ffa500;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.sudoku-icon__cell--empty {
+  background-color: #ffffff;
+}
+
+.sudoku-icon__cell--highlight {
+  background-color: #ffa500;
+  color: #ffffff;
+  font-weight: bold;
+}

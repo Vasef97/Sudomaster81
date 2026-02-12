@@ -1,0 +1,13 @@
+.gameover-dialog__message {
+  color: #1a1a1a;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+  letter-spacing: 0.02em;
+}
+
+.gameover-dialog__submessage {
+  color: #666;
+  font-size: 1rem;
+  margin: 0;
+}

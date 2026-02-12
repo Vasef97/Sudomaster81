@@ -1,0 +1,84 @@
+.win-dialog__message {
+  color: #1a1a1a;
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin: 0 0 1rem 0;
+  letter-spacing: 0.02em;
+}
+
+.win-dialog__score-section {
+  margin-bottom: 1.2rem;
+}
+
+.win-dialog__score-label {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.win-dialog__score-value {
+  margin: 0.2rem 0 0 0;
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.win-dialog__details-row {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2rem;
+  padding: 1rem 1.5rem;
+}
+
+.win-dialog__detail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.win-dialog__detail-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.win-dialog__detail-label--time {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.win-dialog__detail-value {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #1a1a1a;
+}
+
+@media (max-width: 810px) {
+  .win-dialog__message {
+    font-size: 1.2rem;
+  }
+
+  .win-dialog__score-value {
+    font-size: 2rem;
+  }
+
+  .win-dialog__details-row {
+    gap: 1.2rem;
+    padding: 0.8rem 1rem;
+  }
+
+  .win-dialog__detail-label {
+    font-size: 0.7rem;
+  }
+
+  .win-dialog__detail-value {
+    font-size: 0.95rem;
+  }
+}

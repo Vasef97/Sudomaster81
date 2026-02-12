@@ -1,0 +1,47 @@
+.instructions-section {
+  padding-top: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.instructions-section:first-child {
+  padding-top: 8px;
+  border-top: none;
+}
+
+.instructions-section:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.instructions-title {
+  margin: 16px 0 1rem 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  letter-spacing: 0.5px;
+}
+
+.instructions-text {
+  margin: 0;
+  color: #333;
+  line-height: 1.6;
+}
+
+.instructions-list {
+  margin: 0;
+  padding-left: 1.5rem;
+  list-style-type: disc;
+}
+
+.instructions-list li {
+  margin-bottom: 0.7rem;
+  color: #333;
+  line-height: 1.5;
+}
+
+.instructions-list strong {
+  color: #1a1a1a;
+  font-weight: 600;
+}
+
