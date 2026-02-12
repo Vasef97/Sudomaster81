@@ -4,6 +4,16 @@
   box-sizing: border-box;
 }
 
+html {
+  zoom: 0.8;
+}
+
+@media (max-width: 810px) {
+  html {
+    zoom: 1;
+  }
+}
+
 html, body, #root {
   background-color: #ffffff;
   width: 100%;

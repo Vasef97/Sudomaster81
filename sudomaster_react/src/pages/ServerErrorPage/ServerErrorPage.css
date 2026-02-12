@@ -1,5 +1,5 @@
 .server-error-page {
-  min-height: 100vh;
+  min-height: calc(100vh / 0.8);
   background-color: #ffffff;
   display: flex;
   flex-direction: column;
