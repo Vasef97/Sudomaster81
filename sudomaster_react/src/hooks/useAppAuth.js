@@ -7,7 +7,7 @@ export const useAppAuth = (onLogout) => {
   const [hasServerError, setHasServerError] = useState(false);
   const [isWakingUp, setIsWakingUp] = useState(false);
   const retryCountRef = useRef(0);
-  const maxRetries = 20;
+  const maxRetries = 40;
 
   const performAuthCheck = async () => {
     try {
