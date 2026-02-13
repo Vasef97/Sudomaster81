@@ -700,7 +700,7 @@ score = round(3000 * 1.467 * 0.95 * 1.0) = 4181
 - **Delete account** — Cascading delete of all user data (sessions, puzzles, scores)
 - **Game completion** — Session and puzzle are deleted after scoring
 - **Abandon** — Permanently deletes the specific session and puzzle
-- **Stale session cleanup** — Scheduled task runs daily, removes sessions older than 7 days
+- **Stale session cleanup** — Scheduled task runs daily, removes sessions older than 3 days
 
 ### Board representation
 

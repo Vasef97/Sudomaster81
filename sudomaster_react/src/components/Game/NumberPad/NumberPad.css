@@ -170,6 +170,7 @@
     gap: 0.4rem;
     max-width: none;
     width: auto;
+    margin-bottom: 0;
   }
 
   .numpad__tabs {

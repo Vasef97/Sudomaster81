@@ -1,1 +1,12 @@
+@media (max-width: 810px) {
+  .confirm-dialog .MuiDialog-paper {
+    width: 90vw !important;
+    max-width: 90vw !important;
+  }
 
+  .confirm-dialog .MuiDialogActions-root .MuiButton-root {
+    padding: 0.5rem 1rem !important;
+    font-size: 0.8rem !important;
+    white-space: nowrap !important;
+  }
+}

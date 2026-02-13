@@ -18,6 +18,7 @@ export default function InstructionsDialog({ open, onClose, onAboutClick, colorP
       onClose={onClose}
       maxWidth="sm"
       fullWidth
+      className="instructions-dialog"
       disableEnforceFocus
       disableAutoFocus
       disableRestoreFocus

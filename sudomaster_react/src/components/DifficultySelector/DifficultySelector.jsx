@@ -323,7 +323,7 @@ const DifficultySelector = ({ onSelectDifficulty, onLogout, user, colorProfile, 
         onCancel={handleLogoutCancel}
         onConfirm={handleLogoutConfirm}
         title="Logout?"
-        message="Your game will be saved for up to 7 days."
+        message="Are you sure you want to logout?"
         confirmText="Yes, logout"
       />
 

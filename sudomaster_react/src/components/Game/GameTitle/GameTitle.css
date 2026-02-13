@@ -29,14 +29,14 @@
   }
 
   .game-title__title {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     margin: 0;
     font-weight: bold;
   }
 
   .game-title__icon {
-    width: 36px;
-    height: 36px;
+    width: 28px;
+    height: 28px;
     flex-shrink: 0;
   }
 }

@@ -77,11 +77,11 @@ class SessionCleanupTest {
     }
 
     @Test
-    @DisplayName("Cleanup deletes stale IN_PROGRESS sessions older than 7 days")
+    @DisplayName("Cleanup deletes stale IN_PROGRESS sessions older than 3 days")
     void testCleanupStaleInProgressSessions() {
         SudokuPuzzle puzzle = createPuzzle();
-        LocalDateTime eightDaysAgo = LocalDateTime.now().minusDays(8);
-        SudokuGameSession staleSession = createSession(testUser, puzzle, Enums.GameStatus.IN_PROGRESS, eightDaysAgo);
+        LocalDateTime fourDaysAgo = LocalDateTime.now().minusDays(4);
+        SudokuGameSession staleSession = createSession(testUser, puzzle, Enums.GameStatus.IN_PROGRESS, fourDaysAgo);
 
         String sessionId = staleSession.getSessionId();
         assertTrue(sessionRepository.findBySessionId(sessionId).isPresent(), "Session should exist before cleanup");
@@ -92,11 +92,11 @@ class SessionCleanupTest {
     }
 
     @Test
-    @DisplayName("Cleanup deletes stale COMPLETED sessions older than 7 days")
+    @DisplayName("Cleanup deletes stale COMPLETED sessions older than 3 days")
     void testCleanupStaleCompletedSessions() {
         SudokuPuzzle puzzle = createPuzzle();
-        LocalDateTime eightDaysAgo = LocalDateTime.now().minusDays(8);
-        SudokuGameSession staleSession = createSession(testUser, puzzle, Enums.GameStatus.COMPLETED, eightDaysAgo);
+        LocalDateTime fourDaysAgo = LocalDateTime.now().minusDays(4);
+        SudokuGameSession staleSession = createSession(testUser, puzzle, Enums.GameStatus.COMPLETED, fourDaysAgo);
 
         String sessionId = staleSession.getSessionId();
         assertTrue(sessionRepository.findBySessionId(sessionId).isPresent(), "Session should exist before cleanup");
@@ -107,7 +107,7 @@ class SessionCleanupTest {
     }
 
     @Test
-    @DisplayName("Recent sessions (less than 7 days old) are NOT cleaned up")
+    @DisplayName("Recent sessions (less than 3 days old) are NOT cleaned up")
     void testRecentSessionsNotCleaned() {
         SudokuPuzzle puzzle = createPuzzle();
         LocalDateTime twoDaysAgo = LocalDateTime.now().minusDays(2);
@@ -125,8 +125,8 @@ class SessionCleanupTest {
     void testCleanupDeletesAssociatedPuzzles() {
         SudokuPuzzle puzzle = createPuzzle();
         Long puzzleId = puzzle.getId();
-        LocalDateTime eightDaysAgo = LocalDateTime.now().minusDays(8);
-        SudokuGameSession staleSession = createSession(testUser, puzzle, Enums.GameStatus.IN_PROGRESS, eightDaysAgo);
+        LocalDateTime fourDaysAgo = LocalDateTime.now().minusDays(4);
+        SudokuGameSession staleSession = createSession(testUser, puzzle, Enums.GameStatus.IN_PROGRESS, fourDaysAgo);
 
         String sessionId = staleSession.getSessionId();
         assertTrue(puzzleRepository.findById(puzzleId).isPresent(), "Puzzle should exist before cleanup");

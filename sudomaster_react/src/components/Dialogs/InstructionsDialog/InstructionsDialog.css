@@ -45,3 +45,12 @@
   font-weight: 600;
 }
 
+@media (max-width: 810px) {
+  .instructions-dialog .MuiDialog-paper {
+    width: 90vw !important;
+    max-width: 90vw !important;
+    margin-left: 5vw !important;
+    margin-right: 5vw !important;
+  }
+}
+

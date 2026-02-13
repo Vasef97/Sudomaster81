@@ -87,6 +87,40 @@ const GamePage = forwardRef(({ difficulty, savedGameData, onNewGame, onLogout, o
   const pendingTimersRef = useRef([]);
   const pendingMoveRef = useRef(false);
   const pendingCheckAnswerRef = useRef(false);
+  const gamePageRef = useRef(null);
+
+  // Mobile: uniformly zoom numpad to fit between board and footer
+  useEffect(() => {
+    const mql = window.matchMedia('(max-width: 810px)');
+    const layout = () => {
+      const page = gamePageRef.current;
+      if (!page || !mql.matches) return;
+      const numpad = page.querySelector('.numpad');
+      const content = page.querySelector('.game-page__content');
+      const board = page.querySelector('.board');
+      if (!numpad || !content || !board) return;
+
+      // Reset zoom to measure natural size
+      numpad.style.zoom = '1';
+      const contentH = content.clientHeight;
+      const boardH = board.offsetHeight;
+      const numpadNatural = numpad.offsetHeight;
+      const gap = 20; // breathing room above and below numpad
+      const available = contentH - boardH - gap;
+
+      if (numpadNatural > available && available > 50) {
+        numpad.style.zoom = String(Math.floor((available / numpadNatural) * 100) / 100);
+      } else {
+        numpad.style.zoom = '1';
+      }
+    };
+
+    const raf = () => requestAnimationFrame(layout);
+    const observer = new ResizeObserver(raf);
+    if (gamePageRef.current) observer.observe(gamePageRef.current);
+    const timeout = setTimeout(raf, 150);
+    return () => { observer.disconnect(); clearTimeout(timeout); };
+  }, [isLoading]);
 
   const handleGameWin = (winScore, delayMs = 1500) => {
     if (isGameWon) {
@@ -838,34 +872,35 @@ const GamePage = forwardRef(({ difficulty, savedGameData, onNewGame, onLogout, o
   }
 
   return (
-    <div className="game-page">
-          <div className="game-page__header">
-        <GameTitle colorProfile={COLOR_PROFILES[colorProfile]} />
-        {message && <p className="game-page__message">{message}</p>}
-        <GameInfo 
-          difficulty={difficulty} 
-          onPause={handlePauseClick} 
-          onNewGame={handleBackClick}
-          onRestart={handleRestart}
-          onSettings={handleSettingsClick}
-          onInfo={handleInfo}
-          onLogoutClick={handleLogoutClick}
-          elapsedTime={elapsedTime}
-          onElapsedTimeChange={setElapsedTime}
-          isPaused={isPaused}
-          isGameWon={isGameWon}
-          errorCount={errorCount}
-          showErrorIndicator={settings.errorIndicator}
-          threeMistakeLimit={settings.threeMistakeLimit}
-          colorProfile={COLOR_PROFILES[colorProfile]}
-        />
-      </div>
+    <div className="game-page" ref={gamePageRef}>
+      <div className="game-page__top-zone">
+        <div className="game-page__header">
+          <GameTitle colorProfile={COLOR_PROFILES[colorProfile]} />
+          {message && <p className="game-page__message">{message}</p>}
+          <GameInfo 
+            difficulty={difficulty} 
+            onPause={handlePauseClick} 
+            onNewGame={handleBackClick}
+            onRestart={handleRestart}
+            onSettings={handleSettingsClick}
+            onInfo={handleInfo}
+            onLogoutClick={handleLogoutClick}
+            elapsedTime={elapsedTime}
+            onElapsedTimeChange={setElapsedTime}
+            isPaused={isPaused}
+            isGameWon={isGameWon}
+            errorCount={errorCount}
+            showErrorIndicator={settings.errorIndicator}
+            threeMistakeLimit={settings.threeMistakeLimit}
+            colorProfile={COLOR_PROFILES[colorProfile]}
+          />
+        </div>
 
-      <div className="game-page__timer-display">
-        {formatElapsedTime(elapsedTime)}
-      </div>
+        <div className="game-page__timer-display">
+          {formatElapsedTime(elapsedTime)}
+        </div>
 
-      <div className="game-page__mobile-info-wrapper">
+        <div className="game-page__mobile-info-wrapper">
         <div className="game-page__pause-button" style={{ '--color-intensive': COLOR_PROFILES[colorProfile].intensive, '--color-light': COLOR_PROFILES[colorProfile].light }}>
           <div className="game-page__pause-controls">
             <span className="game-page__pause-timer">
@@ -896,6 +931,7 @@ const GamePage = forwardRef(({ difficulty, savedGameData, onNewGame, onLogout, o
             <span className="game-page__mobile-mistake-value">{settings.threeMistakeLimit ? `${errorCount}/3` : errorCount}</span>
           </div>
         )}
+      </div>
       </div>
 
       <div className="game-page__content">
@@ -959,7 +995,7 @@ const GamePage = forwardRef(({ difficulty, savedGameData, onNewGame, onLogout, o
         onCancel={handleExitCancel}
         onConfirm={handleExitConfirm}
         title="Exit to main menu?"
-        message="Your game will be saved for up to 7 days. You can continue later."
+        message="Your game will be saved for up to 3 days. You can continue later."
       />
 
       <ConfirmDialog
@@ -967,7 +1003,7 @@ const GamePage = forwardRef(({ difficulty, savedGameData, onNewGame, onLogout, o
         onCancel={handleLogoutCancel}
         onConfirm={handleLogoutConfirm}
         title="Logout?"
-        message="Your game will be saved for up to 7 days."
+        message="Your game will be saved for up to 3 days."
         confirmText="Yes, logout"
       />
 

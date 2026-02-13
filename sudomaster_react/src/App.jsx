@@ -121,7 +121,7 @@ function App() {
       {!isWakingUp && hasServerError && <ServerErrorPage onRetry={handleRetryServerWithGameCleanup} />}
       {!isWakingUp && !hasServerError && (
         <>
-          {authState === 'checking' && <div className="app__loading">⏳ Loading...</div>}
+          {authState === 'checking' && null}
           {authState === 'login' && (
             <Login onLoginSuccess={handleLoginSuccess} onSwitchToRegister={handleSwitchToRegister} />
           )}

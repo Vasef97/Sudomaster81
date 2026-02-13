@@ -26,7 +26,7 @@ public class SessionCleanupService {
     public void cleanupStaleSessions() {
         log.info("Starting scheduled cleanup of stale game sessions...");
 
-        LocalDateTime cutoff = LocalDateTime.now().minusDays(7);
+        LocalDateTime cutoff = LocalDateTime.now().minusDays(3);
         List<SudokuGameSession> staleSessions = new java.util.ArrayList<>(sessionRepository
                 .findByStatusAndUpdatedAtBefore(Enums.GameStatus.IN_PROGRESS, cutoff));
         staleSessions.addAll(sessionRepository

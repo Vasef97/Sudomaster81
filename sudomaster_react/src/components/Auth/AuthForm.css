@@ -144,8 +144,8 @@
 
   .login-card > *,
   .register-card > * {
-    max-width: 85%;
-    width: 85%;
+    max-width: 80%;
+    width: 80%;
   }
 
   .login-header,
@@ -187,8 +187,8 @@
   .register-form {
     display: flex;
     flex-direction: column;
-    width: 85%;
-    max-width: 85%;
+    width: 80%;
+    max-width: 80%;
   }
 
   .login-form .MuiTextField-root,
@@ -197,9 +197,30 @@
     width: 100% !important;
   }
 
+  .login-form .MuiOutlinedInput-root,
+  .register-form .MuiOutlinedInput-root {
+    height: 44px !important;
+  }
+
+  .login-form .MuiOutlinedInput-input,
+  .register-form .MuiOutlinedInput-input {
+    padding: 10px 14px !important;
+  }
+
+  .login-form .MuiInputLabel-root,
+  .register-form .MuiInputLabel-root {
+    transform: translate(14px, 11px) scale(1) !important;
+  }
+
+  .login-form .MuiInputLabel-shrink,
+  .register-form .MuiInputLabel-shrink {
+    transform: translate(14px, -9px) scale(0.75) !important;
+  }
+
   .login-form .MuiButton-root,
   .register-form .MuiButton-root {
     width: 100% !important;
+    padding: 8px !important;
   }
 
   .login-footer,

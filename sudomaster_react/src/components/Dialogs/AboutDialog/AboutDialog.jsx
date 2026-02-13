@@ -19,6 +19,7 @@ export default function AboutDialog({ open, onClose, colorProfile = 'orange', co
       onClose={onClose}
       maxWidth="lg"
       fullWidth
+      className="about-dialog"
       disableEnforceFocus
       disableAutoFocus
       disableRestoreFocus

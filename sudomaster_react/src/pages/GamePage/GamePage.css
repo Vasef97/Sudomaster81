@@ -171,14 +171,35 @@
   display: none;
 }
 
+/* Desktop: top-zone is transparent */
+.game-page__top-zone {
+  width: 100%;
+  display: contents;
+}
+
 @media (max-width: 810px) {
   .game-page {
-    margin-top: 10px;
-    padding: 0.5rem 15px;
-    gap: 0.3rem;
-    overflow-y: auto;
-    height: auto;
-    min-height: 100dvh;
+    margin-top: 0;
+    padding: 0;
+    gap: 0;
+    overflow: hidden;
+    height: 100dvh;
+    min-height: 0;
+    padding-bottom: 28px; /* space for fixed footer */
+  }
+
+  /* ── Top 20% zone ── */
+  .game-page__top-zone {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    height: 20dvh;
+    min-height: 0;
+    flex-shrink: 0;
+    overflow: hidden;
+    padding: 8px 8px 0 8px;
+    box-sizing: border-box;
   }
 
   .game-page__header {
@@ -190,57 +211,42 @@
     margin-bottom: 0;
     text-align: left;
     flex-direction: row;
-  }
-
-  .game-page__content {
-    flex-direction: column;
-    gap: 1rem;
-    width: 100%;
-    max-width: 100%;
-    align-items: center;
-  }
-
-  .game-page__pause-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.3rem;
-    margin: 0;
-  }
-
-  .game-page__pause-button button {
-    color: var(--color-intensive) !important;
-  }
-
-  .game-page__pause-button button:hover {
-    background-color: var(--color-light) !important;
-  }
-
-  .game-page__pause-timer {
-    font-size: 1.1rem;
-    font-weight: bold;
-    color: #1a1a1a;
-    font-family: 'Courier New', monospace;
-    letter-spacing: 0.05em;
-  }
-
-  .game-page__pause-difficulty {
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: #666;
-    text-transform: capitalize;
-    letter-spacing: 0.05em;
+    flex-shrink: 1;
+    min-height: 0;
   }
 
   .game-page__mobile-info-wrapper {
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    justify-content: flex-start;
+    justify-content: center;
     gap: 0;
     width: 100%;
     position: relative;
-    min-height: 6.5rem;
+    min-height: 0;
+    flex-shrink: 1;
+    margin: auto 0;
+  }
+
+  /* ── Content: board + numpad ── */
+  .game-page__content {
+    flex: 1 1 0;
+    min-height: 0;
+    flex-direction: column;
+    gap: 0;
+    width: 100%;
+    max-width: 100%;
+    align-items: center;
+    display: flex;
+    justify-content: flex-start;
+    padding: 0 5px;
+    box-sizing: border-box;
+  }
+
+  /* Numpad: centered in remaining space via auto margins */
+  .game-page__content .numpad {
+    margin-top: auto;
+    margin-bottom: auto;
   }
 
   .game-page__pause-button {
@@ -251,7 +257,15 @@
     margin: 0;
     flex: 0 0 auto;
     width: 100%;
-    padding-bottom: 0.5rem;
+    padding-bottom: 0.2rem;
+  }
+
+  .game-page__pause-button button {
+    color: var(--color-intensive) !important;
+  }
+
+  .game-page__pause-button button:hover {
+    background-color: var(--color-light) !important;
   }
 
   .game-page__pause-controls {
@@ -265,7 +279,7 @@
   .game-page__pause-timer {
     flex: 1;
     text-align: right;
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: bold;
     color: #1a1a1a;
     font-family: 'Courier New', monospace;
@@ -276,7 +290,7 @@
   .game-page__pause-difficulty {
     flex: 1;
     text-align: left;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 600;
     color: #666;
     text-transform: capitalize;
@@ -286,7 +300,7 @@
 
   .game-page__pause-button:not(:only-child) {
     border-top: none;
-    padding-top: 0.5rem;
+    padding-top: 0.2rem;
     position: relative;
   }
 
@@ -312,8 +326,8 @@
     gap: 0.5rem;
     transition: all 0.3s ease;
     width: 100%;
-    flex: 1 1 auto;
-    padding: 0.3rem 0;
+    flex: 0 0 auto;
+    padding: 0.1rem 0;
     margin-left: 0;
     order: -1;
   }
