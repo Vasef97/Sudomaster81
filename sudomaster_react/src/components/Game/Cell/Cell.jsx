@@ -18,6 +18,7 @@ const Cell = ({
   const getHighlightClass = () => {
     if (isSelected) return 'cell--selected';
     if (isHighlightedByValue) return 'cell--highlighted-value';
+    if (isHighlightedByLocation && isPrefilled) return 'cell--prefilled-highlighted';
     if (isHighlightedByLocation) return 'cell--highlighted';
     if (isDuplicate) return 'cell--duplicate';
     if (isPrefilled) return 'cell--prefilled';
@@ -33,6 +34,7 @@ const Cell = ({
       style={{
         '--color-intensive': colorProfile?.intensive || '#ffa500',
         '--color-light': colorProfile?.light || '#ffe4cc',
+        '--color-prefilled-light': colorProfile?.prefilledLight || '#efefe2',
       }}
     >
       {isCandidateMode && candidatesArray.length > 0 && !value ? (

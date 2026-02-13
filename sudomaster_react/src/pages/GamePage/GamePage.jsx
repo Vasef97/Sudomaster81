@@ -450,6 +450,15 @@ const GamePage = forwardRef(({ difficulty, savedGameData, onNewGame, onLogout, o
     setSelectedCell({ row, col });
   };
 
+  const handleOutsideClick = useCallback((e) => {
+    if (!selectedCell) return;
+    const target = e.target;
+    if (target.closest('.board') || target.closest('.numpad')) return;
+    if (target.closest('button') || target.closest('a') || target.closest('[role="button"]') || target.closest('.MuiIconButton-root') || target.closest('.MuiButton-root')) return;
+    if (target.closest('.MuiDialog-root') || target.closest('.MuiModal-root') || target.closest('.MuiBackdrop-root')) return;
+    setSelectedCell(null);
+  }, [selectedCell, setSelectedCell]);
+
   const handleNumberClick = async (number, isCandidate) => {
     if (!selectedCell || !sessionId || isGameWon || anyDialogOpen) return;
 
@@ -872,7 +881,7 @@ const GamePage = forwardRef(({ difficulty, savedGameData, onNewGame, onLogout, o
   }
 
   return (
-    <div className="game-page" ref={gamePageRef}>
+    <div className="game-page" ref={gamePageRef} onClick={handleOutsideClick}>
       <div className="game-page__top-zone">
         <div className="game-page__header">
           <GameTitle colorProfile={COLOR_PROFILES[colorProfile]} />
@@ -958,6 +967,7 @@ const GamePage = forwardRef(({ difficulty, savedGameData, onNewGame, onLogout, o
           onToggleMode={handleCandidateModeToggle}
           isAutoCandidateMode={isAutoCandidateMode}
           onToggleAutoCandidateMode={handleToggleAutoCandidateMode}
+          fontSize={settings.fontSize}
         />
       </div>
 

@@ -10,6 +10,7 @@ const NumberPad = ({
   onToggleMode,
   isAutoCandidateMode,
   onToggleAutoCandidateMode,
+  fontSize,
 }) => {
   const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
@@ -30,7 +31,7 @@ const NumberPad = ({
   };
 
   return (
-    <div className="numpad">
+    <div className={`numpad ${fontSize === 'large' ? 'numpad--font-large' : fontSize === 'normal' ? 'numpad--font-normal' : ''}`}>
       <div className="numpad__tabs">
         <button
           className={`numpad__tab ${!isCandidateMode ? 'numpad__tab--active' : ''}`}

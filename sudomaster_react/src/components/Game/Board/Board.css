@@ -41,6 +41,7 @@
     max-height: calc(100vw - 10px);
     margin: 0;
     flex-shrink: 0;
+    border-width: 0.15rem;
   }
 }
 

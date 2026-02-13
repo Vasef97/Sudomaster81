@@ -20,12 +20,12 @@
 .numpad__tab {
   flex: 1;
   padding: 0.7rem 1rem;
-  background-color: #e8e8e8;
-  border: none;
+  background-color: transparent;
+  border: 1px solid #bbb;
   font-size: 0.9rem;
   font-weight: 600;
   cursor: pointer;
-  color: #999;
+  color: #1a1a1a;
   transition: all 0.2s ease;
   border-radius: 0;
 }
@@ -33,7 +33,7 @@
 .numpad__tab--active {
   color: white;
   background-color: #1a1a1a;
-  border: none;
+  border: 1px solid #1a1a1a;
 }
 
 .numpad__auto-candidate-checkbox {
@@ -81,7 +81,7 @@
   cursor: pointer;
   transition: all 0.15s ease;
   color: #1a1a1a;
-  background-color: #d3d3d3;
+  background-color: #e8e8e8;
   display: flex;
   align-items: stretch;
   justify-content: stretch;
@@ -124,7 +124,7 @@
   padding: 0.8rem;
   font-size: 1rem;
   font-weight: bold;
-  background-color: #d3d3d3;
+  background-color: #e8e8e8;
   color: #1a1a1a;
   border: 1px solid #999;
   border-radius: 2px;
@@ -145,7 +145,7 @@
   padding: 1rem;
   font-size: 1rem;
   font-weight: bold;
-  background-color: #d3d3d3;
+  background-color: #e8e8e8;
   color: #1a1a1a;
   border: 1px solid #999;
   border-radius: 2px;
@@ -162,14 +162,32 @@
   transform: scale(0.95);
 }
 
+/* Font size: normal (small) */
+.numpad--font-normal .numpad__button {
+  font-size: 0.85rem;
+}
+.numpad--font-normal .numpad__clear,
+.numpad--font-normal .numpad__undo {
+  font-size: 0.85rem;
+}
+
+/* Font size: large */
+.numpad--font-large .numpad__button {
+  font-size: 1.15rem;
+}
+.numpad--font-large .numpad__clear {
+  font-size: 1.15rem;
+}
+
 @media (max-width: 810px) {
   .numpad {
     display: grid;
-    grid-template-columns: repeat(3, 1fr) auto;
-    grid-template-rows: auto auto auto auto;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: auto auto auto;
     gap: 0.4rem;
-    max-width: none;
-    width: auto;
+    max-width: 420px;
+    width: 90%;
+    margin: 0 auto;
     margin-bottom: 0;
   }
 
@@ -179,49 +197,69 @@
     margin-bottom: 0;
   }
 
+  /* Flatten buttons container so children participate in parent grid */
   .numpad__buttons {
-    grid-column: 1 / 4;
-    grid-row: 2 / 5;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0.4rem;
-    width: auto;
-    height: auto;
+    display: contents;
     margin-bottom: 0;
   }
 
   .numpad__button {
-    width: 72px;
-    height: 56px;
-    min-height: 56px;
+    width: auto;
+    height: auto;
+    min-height: 44px;
   }
 
+  /* Row 2: buttons 1-5 */
+  .numpad__button:nth-child(1) { grid-column: 1; grid-row: 2; }
+  .numpad__button:nth-child(2) { grid-column: 2; grid-row: 2; }
+  .numpad__button:nth-child(3) { grid-column: 3; grid-row: 2; }
+  .numpad__button:nth-child(4) { grid-column: 4; grid-row: 2; }
+  .numpad__button:nth-child(5) { grid-column: 5; grid-row: 2; }
+
+  /* Row 3: buttons 6-9 */
+  .numpad__button:nth-child(6) { grid-column: 1; grid-row: 3; }
+  .numpad__button:nth-child(7) { grid-column: 2; grid-row: 3; }
+  .numpad__button:nth-child(8) { grid-column: 3; grid-row: 3; }
+  .numpad__button:nth-child(9) { grid-column: 4; grid-row: 3; }
+
+  /* Flatten controls container */
   .numpad__controls {
-    grid-column: 4;
-    grid-row: 2 / 5;
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
+    display: contents;
     margin-top: 0;
   }
 
+  /* X (clear) spans cols 5-6 on row 3 */
   .numpad__clear {
-    grid-row: unset;
-    grid-column: unset;
+    grid-column: 5 / 7;
+    grid-row: 3;
     padding: 0.4rem;
     font-size: 1rem;
-    width: 72px;
-    flex: none;
-    height: calc(56px + 0.4rem + 56px);
   }
 
+  /* Undo on row 2 col 6 */
   .numpad__undo {
-    grid-row: unset;
-    grid-column: unset;
+    grid-column: 6;
+    grid-row: 2;
     padding: 0.4rem;
     font-size: 0.9rem;
-    width: 72px;
-    height: 56px;
-    flex: none;
+  }
+
+  /* Mobile font size: normal (small) */
+  .numpad--font-normal .numpad__button {
+    font-size: 0.85rem;
+  }
+  .numpad--font-normal .numpad__clear {
+    font-size: 0.85rem;
+  }
+  .numpad--font-normal .numpad__undo {
+    font-size: 0.75rem;
+  }
+
+  /* Mobile font size: large */
+  .numpad--font-large .numpad__button {
+    font-size: 1.15rem;
+  }
+  .numpad--font-large .numpad__clear {
+    font-size: 1.15rem;
   }
 }

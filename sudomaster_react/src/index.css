@@ -8,8 +8,15 @@ html {
   zoom: 0.8;
 }
 
+.MuiTooltip-popper {
+  zoom: calc(1 / 0.8);
+}
+
 @media (max-width: 810px) {
   html {
+    zoom: 1;
+  }
+  .MuiTooltip-popper {
     zoom: 1;
   }
 }

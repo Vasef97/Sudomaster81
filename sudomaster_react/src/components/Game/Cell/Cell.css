@@ -90,6 +90,12 @@
   color: #1a1a1a;
 }
 
+.cell--prefilled-highlighted {
+  background-color: var(--color-prefilled-light, #efefe2);
+  cursor: default;
+  color: #1a1a1a;
+}
+
 .cell--highlighted-value {
   background-color: var(--color-intensive, #ffa500);
   color: #1a1a1a;
@@ -210,4 +216,55 @@
 .cell--large-font .cell__candidate,
 .cell--large-font .cell__candidate-dot {
   font-size: 0.55rem;
+}
+
+@media (max-width: 810px) {
+  .cell {
+    border-width: 0.04rem;
+  }
+
+  .cell:nth-child(3),
+  .cell:nth-child(12),
+  .cell:nth-child(21),
+  .cell:nth-child(30),
+  .cell:nth-child(39),
+  .cell:nth-child(48),
+  .cell:nth-child(57),
+  .cell:nth-child(66),
+  .cell:nth-child(75),
+  .cell:nth-child(6),
+  .cell:nth-child(15),
+  .cell:nth-child(24),
+  .cell:nth-child(33),
+  .cell:nth-child(42),
+  .cell:nth-child(51),
+  .cell:nth-child(60),
+  .cell:nth-child(69),
+  .cell:nth-child(78) {
+    border-right-width: 0.1rem;
+  }
+
+  .cell:nth-child(19),
+  .cell:nth-child(20),
+  .cell:nth-child(21),
+  .cell:nth-child(22),
+  .cell:nth-child(23),
+  .cell:nth-child(24),
+  .cell:nth-child(25),
+  .cell:nth-child(26),
+  .cell:nth-child(27) {
+    border-bottom-width: 0.1rem;
+  }
+
+  .cell:nth-child(46),
+  .cell:nth-child(47),
+  .cell:nth-child(48),
+  .cell:nth-child(49),
+  .cell:nth-child(50),
+  .cell:nth-child(51),
+  .cell:nth-child(52),
+  .cell:nth-child(53),
+  .cell:nth-child(54) {
+    border-bottom-width: 0.1rem;
+  }
 }

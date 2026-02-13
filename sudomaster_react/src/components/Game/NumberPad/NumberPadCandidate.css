@@ -86,3 +86,67 @@
   color: #1a1a1a;
   font-weight: bold;
 }
+
+/* Candidate font size: normal (small) */
+.numpad--font-normal .numpad__button-digit {
+  font-size: 0.65rem;
+}
+.numpad--font-normal .numpad__button-digit:nth-child(1),
+.numpad--font-normal .numpad__button-digit:nth-child(2),
+.numpad--font-normal .numpad__button-digit:nth-child(3) {
+  transform: translateY(3px);
+}
+.numpad--font-normal .numpad__button-digit:nth-child(7),
+.numpad--font-normal .numpad__button-digit:nth-child(8),
+.numpad--font-normal .numpad__button-digit:nth-child(9) {
+  transform: translateY(-3px);
+}
+
+/* Candidate font size: large */
+.numpad--font-large .numpad__button-digit {
+  font-size: 0.95rem;
+}
+.numpad--font-large .numpad__button-digit:nth-child(1),
+.numpad--font-large .numpad__button-digit:nth-child(2),
+.numpad--font-large .numpad__button-digit:nth-child(3) {
+  transform: translateY(5px);
+}
+.numpad--font-large .numpad__button-digit:nth-child(7),
+.numpad--font-large .numpad__button-digit:nth-child(8),
+.numpad--font-large .numpad__button-digit:nth-child(9) {
+  transform: translateY(-5px);
+}
+
+@media (max-width: 810px) {
+  /* Hide the 3x3 grid on mobile, show only active digit centered */
+  .numpad__button-grid {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+  }
+
+  .numpad__button-digit {
+    display: none !important;
+  }
+
+  .numpad__button-digit.numpad__button-digit--active {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.65rem;
+    transform: none !important;
+    width: auto;
+    height: auto;
+  }
+
+  /* Mobile candidate font size: normal (small) */
+  .numpad--font-normal .numpad__button-digit.numpad__button-digit--active {
+    font-size: 0.55rem !important;
+  }
+
+  /* Mobile candidate font size: large */
+  .numpad--font-large .numpad__button-digit.numpad__button-digit--active {
+    font-size: 0.75rem !important;
+  }
+}
