@@ -229,13 +229,14 @@ export default function Leaderboard({ open, onClose, currentUsername, accentColo
                 color: '#666',
                 padding: { xs: '8px 0px', sm: '12px 16px' },
                 minWidth: { xs: '50px', sm: 'auto' },
+                borderBottom: '3px solid transparent',
                 '&.Mui-selected': {
                   color: accentColor,
+                  borderBottom: `3px solid ${accentColor}`,
                 },
               },
               '& .MuiTabs-indicator': {
-                backgroundColor: accentColor,
-                height: '3px',
+                display: 'none',
               },
             }}
           >
@@ -267,14 +268,14 @@ export default function Leaderboard({ open, onClose, currentUsername, accentColo
               <Table size="small" sx={{ tableLayout: 'fixed', width: '100%' }}>
                 <TableHead sx={{ backgroundColor: '#f5f5f5' }}>
                   <TableRow>
-                    <TableCell align="left" sx={{ fontWeight: 'bold', color: '#1a1a1a', width: isSearching ? '16.66%' : '20%', textAlign: 'left' }}>Rank</TableCell>
-                    <TableCell align="left" sx={{ fontWeight: 'bold', color: '#1a1a1a', width: isSearching ? '16.66%' : '20%', textAlign: 'left' }}>Player</TableCell>
-                    {isSearching && <TableCell align="left" sx={{ fontWeight: 'bold', color: '#1a1a1a', width: '16.66%', textAlign: 'left' }}>Difficulty</TableCell>}
-                    <TableCell align="left" sx={{ fontWeight: 'bold', color: '#1a1a1a', width: isSearching ? '16.66%' : '20%', textAlign: 'left' }}>Assisted</TableCell>
-                    <TableCell align="left" sx={{ fontWeight: 'bold', color: '#1a1a1a', width: isSearching ? '16.66%' : '20%', textAlign: 'left' }}>
+                    {!isSearching && <TableCell align="left" sx={{ fontWeight: 'bold', color: '#1a1a1a', width: '20%', textAlign: 'left', fontSize: { xs: '0.7rem', sm: '0.875rem' } }}>Rank</TableCell>}
+                    <TableCell align="left" sx={{ fontWeight: 'bold', color: '#1a1a1a', width: '20%', textAlign: 'left', fontSize: { xs: '0.7rem', sm: '0.875rem' } }}>Player</TableCell>
+                    {isSearching && <TableCell align="left" sx={{ fontWeight: 'bold', color: '#1a1a1a', width: '20%', textAlign: 'left', fontSize: { xs: '0.7rem', sm: '0.875rem' } }}>Difficulty</TableCell>}
+                    <TableCell align="left" sx={{ fontWeight: 'bold', color: '#1a1a1a', width: '20%', textAlign: 'left', fontSize: { xs: '0.7rem', sm: '0.875rem' } }}>Assisted</TableCell>
+                    <TableCell align="left" sx={{ fontWeight: 'bold', color: '#1a1a1a', width: '20%', textAlign: 'left', fontSize: { xs: '0.7rem', sm: '0.875rem' } }}>
                       Time
                     </TableCell>
-                    <TableCell align="left" sx={{ fontWeight: 'bold', color: '#1a1a1a', width: isSearching ? '16.66%' : '20%', textAlign: 'left' }}>
+                    <TableCell align="left" sx={{ fontWeight: 'bold', color: '#1a1a1a', width: '20%', textAlign: 'left', fontSize: { xs: '0.7rem', sm: '0.875rem' } }}>
                       Score
                     </TableCell>
                   </TableRow>
@@ -295,33 +296,37 @@ export default function Leaderboard({ open, onClose, currentUsername, accentColo
                         },
                       }}
                     >
-                      <TableCell
-                        align="left"
-                        sx={{
-                          fontWeight: isCurrentUser ? '700' : '500',
-                          color: globalRank === 1 ? accentColor : '#1a1a1a',
-                          fontSize: { xs: 'clamp(0.65rem, 2.5vw, 0.9rem)', sm: '1rem' },
-                          width: isSearching ? '16.66%' : '20%',
-                          textAlign: 'left',
-                        }}
-                      >
-                        {globalRank === 1 ? '🥇' : globalRank === 2 ? '🥈' : globalRank === 3 ? '🥉' : globalRank}
-                      </TableCell>
-                      <TableCell align="left" sx={{ fontWeight: isCurrentUser ? '700' : '500', color: '#1a1a1a', fontSize: { xs: 'clamp(0.65rem, 2.5vw, 0.9rem)', sm: '1rem' }, width: isSearching ? '16.66%' : '20%', textAlign: 'left' }}>
+                      {!isSearching && (
+                        <TableCell
+                          align="left"
+                          sx={{
+                            fontWeight: isCurrentUser ? '700' : '500',
+                            color: globalRank === 1 ? accentColor : '#1a1a1a',
+                            fontSize: { xs: 'clamp(0.65rem, 2.5vw, 0.9rem)', sm: '1rem' },
+                            width: '20%',
+                            textAlign: 'left',
+                          }}
+                        >
+                          {globalRank <= 3 ? (
+                            <span style={{ marginLeft: '-4px' }}>{globalRank === 1 ? '🥇' : globalRank === 2 ? '🥈' : '🥉'}</span>
+                          ) : globalRank}
+                        </TableCell>
+                      )}
+                      <TableCell align="left" sx={{ fontWeight: isCurrentUser ? '700' : '500', color: '#1a1a1a', fontSize: { xs: 'clamp(0.65rem, 2.5vw, 0.9rem)', sm: '1rem' }, width: '20%', textAlign: 'left' }}>
                         {(entry.username || 'Anonymous')}
                       </TableCell>
                       {isSearching && (
-                        <TableCell align="left" sx={{ fontWeight: isCurrentUser ? '700' : '500', color: '#1a1a1a', fontSize: { xs: 'clamp(0.65rem, 2.5vw, 0.9rem)', sm: '1rem' }, width: '16.66%', textAlign: 'left' }}>
+                        <TableCell align="left" sx={{ fontWeight: isCurrentUser ? '700' : '500', color: '#1a1a1a', fontSize: { xs: 'clamp(0.65rem, 2.5vw, 0.9rem)', sm: '1rem' }, width: '20%', textAlign: 'left' }}>
                           {entry.difficulty}
                         </TableCell>
                       )}
-                      <TableCell align="center" sx={{ fontWeight: isCurrentUser ? '700' : '500', color: '#1a1a1a', fontSize: { xs: 'clamp(0.65rem, 2.5vw, 0.9rem)', sm: '1rem' }, width: isSearching ? '16.66%' : '20%' }}>
+                      <TableCell align="center" sx={{ fontWeight: isCurrentUser ? '700' : '500', color: '#1a1a1a', fontSize: { xs: 'clamp(0.65rem, 2.5vw, 0.9rem)', sm: '1rem' }, width: '20%' }}>
                         {(entry.mistakes > 0 || entry.autoCandidateMode || entry.assist) ? 'Yes' : 'No'}
                       </TableCell>
-                      <TableCell align="left" sx={{ fontWeight: isCurrentUser ? '700' : '500', color: '#1a1a1a', fontSize: { xs: 'clamp(0.65rem, 2.5vw, 0.9rem)', sm: '1rem' }, width: isSearching ? '16.66%' : '20%', textAlign: 'left' }}>
+                      <TableCell align="left" sx={{ fontWeight: isCurrentUser ? '700' : '500', color: '#1a1a1a', fontSize: { xs: 'clamp(0.65rem, 2.5vw, 0.9rem)', sm: '1rem' }, width: '20%', textAlign: 'left' }}>
                         {formatTime(entry.elapsedTimeSeconds)}
                       </TableCell>
-                      <TableCell align="left" sx={{ fontWeight: isCurrentUser ? '700' : 'bold', color: accentColor, fontSize: { xs: 'clamp(0.65rem, 2.5vw, 0.9rem)', sm: '1rem' }, width: isSearching ? '16.66%' : '20%', textAlign: 'left' }}>
+                      <TableCell align="left" sx={{ fontWeight: isCurrentUser ? '700' : 'bold', color: accentColor, fontSize: { xs: 'clamp(0.65rem, 2.5vw, 0.9rem)', sm: '1rem' }, width: '20%', textAlign: 'left' }}>
                         {entry.score || 0}
                       </TableCell>
                     </TableRow>
