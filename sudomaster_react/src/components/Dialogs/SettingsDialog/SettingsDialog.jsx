@@ -269,7 +269,7 @@ const SettingsDialog = ({ open, onClose, settings, onSettingsChange, isAutoCandi
 
         <div>
           <p style={{ fontSize: '1rem', fontWeight: '600', color: '#333', margin: '0 0 0.5rem 0' }}>
-            Font Size
+            Grid Font Size
           </p>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.75rem' }}>
             <span style={{ fontSize: '0.85rem', fontWeight: 'bold', color: '#666' }}>a</span>
