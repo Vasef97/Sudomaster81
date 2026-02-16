@@ -18,14 +18,13 @@ import {
   Alert,
   Box,
   TextField,
-  Backdrop,
 } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import { gameService } from '../../services/authService';
 import { formatTime } from '../../utils/formatters';
 import './Leaderboard.css';
 
-export default function Leaderboard({ open, onClose, currentUsername, accentColor = '#ffa500' }) {
+export default function Leaderboard({ open, onClose, currentUsername, accentColor = '#ffa500', colorProfile = {} }) {
   const [selectedTab, setSelectedTab] = useState('EASY');
   const [leaderboard, setLeaderboard] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -139,22 +138,6 @@ export default function Leaderboard({ open, onClose, currentUsername, accentColo
 
   return (
     <>
-      <Backdrop
-        sx={{
-          color: '#fff',
-          zIndex: 1300,
-          backgroundColor: 'rgba(0, 0, 0, 0.5)',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          gap: 2,
-        }}
-        open={loading}
-      >
-        <CircularProgress color="inherit" size={60} />
-        <p style={{ fontSize: '1.1rem', fontWeight: 'bold' }}>Loading...</p>
-      </Backdrop>
       <Dialog
         open={open}
         onClose={onClose}
@@ -172,6 +155,7 @@ export default function Leaderboard({ open, onClose, currentUsername, accentColo
             boxShadow: '0 8px 32px rgba(0, 0, 0, 0.15)',
             display: 'flex',
             flexDirection: 'column',
+            '--color-intensive': colorProfile?.intensive || accentColor,
             '@media (max-width: 810px)': {
               overflow: 'hidden',
             },
@@ -224,15 +208,29 @@ export default function Leaderboard({ open, onClose, currentUsername, accentColo
             sx={{
               marginBottom: '32px',
               '& .MuiTab-root': {
+                position: 'relative',
                 fontSize: { xs: '0.6rem', sm: '0.9rem' },
                 fontWeight: '600',
                 color: '#666',
                 padding: { xs: '8px 0px', sm: '12px 16px' },
                 minWidth: { xs: '50px', sm: 'auto' },
                 borderBottom: '3px solid transparent',
+                transition: 'color 200ms ease',
                 '&.Mui-selected': {
                   color: accentColor,
-                  borderBottom: `3px solid ${accentColor}`,
+                  borderBottom: '3px solid transparent',
+                },
+
+                '&.Mui-selected::after': {
+                  content: '""',
+                  position: 'absolute',
+                  left: '50%',
+                  bottom: 0,
+                  transform: 'translateX(-50%)',
+                  width: '40%',
+                  height: '4px',
+                  borderRadius: '3px',
+                  backgroundColor: accentColor,
                 },
               },
               '& .MuiTabs-indicator': {
@@ -268,8 +266,8 @@ export default function Leaderboard({ open, onClose, currentUsername, accentColo
               <Table size="small" sx={{ tableLayout: 'fixed', width: '100%' }}>
                 <TableHead sx={{ backgroundColor: '#f5f5f5' }}>
                   <TableRow>
-                    {!isSearching && <TableCell align="left" sx={{ fontWeight: 'bold', color: '#1a1a1a', width: '20%', textAlign: 'left', fontSize: { xs: '0.7rem', sm: '0.875rem' } }}>Rank</TableCell>}
-                    <TableCell align="left" sx={{ fontWeight: 'bold', color: '#1a1a1a', width: '20%', textAlign: 'left', fontSize: { xs: '0.7rem', sm: '0.875rem' } }}>Player</TableCell>
+                    {!isSearching && <TableCell align="left" sx={{ fontWeight: 'bold', color: '#1a1a1a', width: '13%', textAlign: 'left', fontSize: { xs: '0.7rem', sm: '0.875rem' } }}>Rank</TableCell>}
+                    <TableCell align="left" sx={{ fontWeight: 'bold', color: '#1a1a1a', width: '27%', textAlign: 'left', fontSize: { xs: '0.7rem', sm: '0.875rem' } }}>Player</TableCell>
                     {isSearching && <TableCell align="left" sx={{ fontWeight: 'bold', color: '#1a1a1a', width: '20%', textAlign: 'left', fontSize: { xs: '0.7rem', sm: '0.875rem' } }}>Difficulty</TableCell>}
                     <TableCell align="left" sx={{ fontWeight: 'bold', color: '#1a1a1a', width: '20%', textAlign: 'left', fontSize: { xs: '0.7rem', sm: '0.875rem' } }}>Assisted</TableCell>
                     <TableCell align="left" sx={{ fontWeight: 'bold', color: '#1a1a1a', width: '20%', textAlign: 'left', fontSize: { xs: '0.7rem', sm: '0.875rem' } }}>
@@ -288,8 +286,9 @@ export default function Leaderboard({ open, onClose, currentUsername, accentColo
                     <TableRow
                       key={`${entry.username}-${entry.score}-${entry.difficulty || selectedTab}-${index}`}
                       sx={{
+                        transition: 'box-shadow 150ms',
                         '&:hover': {
-                          backgroundColor: '#fff9f0',
+                          boxShadow: 'inset 3px 0 0 var(--color-intensive, #ffa500)'
                         },
                         '&:nth-of-type(odd)': {
                           backgroundColor: '#fafafa',
@@ -298,21 +297,24 @@ export default function Leaderboard({ open, onClose, currentUsername, accentColo
                     >
                       {!isSearching && (
                         <TableCell
-                          align="left"
+                          align="center"
                           sx={{
                             fontWeight: isCurrentUser ? '700' : '500',
                             color: globalRank === 1 ? accentColor : '#1a1a1a',
                             fontSize: { xs: 'clamp(0.65rem, 2.5vw, 0.9rem)', sm: '1rem' },
-                            width: '20%',
-                            textAlign: 'left',
+                            width: '13%',
+                            textAlign: 'center',
+                            verticalAlign: 'middle',
                           }}
                         >
                           {globalRank <= 3 ? (
-                            <span style={{ marginLeft: '-4px' }}>{globalRank === 1 ? '🥇' : globalRank === 2 ? '🥈' : '🥉'}</span>
-                          ) : globalRank}
+                            <span style={{ display: 'inline-block' }}>{globalRank === 1 ? '🥇' : globalRank === 2 ? '🥈' : '🥉'}</span>
+                          ) : (
+                            <span style={{ display: 'inline-block' }}>{globalRank}</span>
+                          )}
                         </TableCell>
-                      )}
-                      <TableCell align="left" sx={{ fontWeight: isCurrentUser ? '700' : '500', color: '#1a1a1a', fontSize: { xs: 'clamp(0.65rem, 2.5vw, 0.9rem)', sm: '1rem' }, width: '20%', textAlign: 'left' }}>
+                      )} 
+                      <TableCell align="left" sx={{ fontWeight: isCurrentUser ? '700' : '500', color: '#1a1a1a', fontSize: { xs: 'clamp(0.65rem, 2.5vw, 0.9rem)', sm: '1rem' }, width: '27%', textAlign: 'left' }}>
                         {(entry.username || 'Anonymous')}
                       </TableCell>
                       {isSearching && (

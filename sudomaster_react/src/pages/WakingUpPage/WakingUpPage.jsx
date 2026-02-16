@@ -21,7 +21,7 @@ const WakingUpPage = () => {
         />
         <h1 className="waking-up-page__title">Loading</h1>
         <p className="waking-up-page__message">
-          Waking up the API server... Running on a free tier, so grab some coffee! ☕ (~1 minute)
+          Waking up the API server... Running on a free tier, so grab some coffee! ☕ (~2 minutes)
         </p>
       </div>
     </div>

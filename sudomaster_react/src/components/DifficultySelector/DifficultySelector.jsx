@@ -312,7 +312,7 @@ const DifficultySelector = ({ onSelectDifficulty, onLogout, user, colorProfile, 
         ))}
       </div>
 
-      <Leaderboard open={leaderboardOpen} onClose={() => setLeaderboardOpen(false)} currentUsername={user?.username} accentColor={accentColor} />
+      <Leaderboard open={leaderboardOpen} onClose={() => setLeaderboardOpen(false)} currentUsername={user?.username} accentColor={accentColor} colorProfile={COLOR_PROFILES[colorProfile]} />
 
       <InstructionsDialog open={isInstructionsOpen} onClose={() => setIsInstructionsOpen(false)} onAboutClick={handleAboutClick} colorProfile={colorProfile} colorProfiles={COLOR_PROFILES} />
 
